@@ -18,6 +18,14 @@ pipeline {
                 sh "mvn clean package"
             }
         }
+    stage('SonarQube Analysis') {
+      steps{
+        withSonarQubeEnv('sonar-server') {
+        sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=toto-gros  -Dsonar.projectName=toto-gros"
+      }
+    }
+     
+  }
 
         stage('Publish to Nexus') {
             steps {
