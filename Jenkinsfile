@@ -33,18 +33,6 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('sonar-server') {
-                    sh "${MAVEN_HOME}/bin/mvn clean verify sonar:sonar \
-                        -Dsonar.projectKey=bocoum \
-                        -Dsonar.projectName='bocoum' \
-                        -Dsonar.host.url='http://localhost:9000' \
-                        -Dsonar.login='sqa_dc17abae8dc53792f0e9838e240e363c783a23ab'"
-                }
-            }
-        }
-
         stage('Publish to Nexus') {
             steps {
                 script {
