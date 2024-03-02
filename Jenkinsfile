@@ -40,7 +40,7 @@ pipeline {
                         -Dsonar.projectKey=bocoum \
                         -Dsonar.projectName='bocoum' \
                         -Dsonar.host.url='http://localhost:9000' \
-                        -Dsonar.login='sqp_a20fbbc307aaf8fed3348f38cc5575d63f84cf54'"
+                        -Dsonar.login='sqa_dc17abae8dc53792f0e9838e240e363c783a23ab'"
                 }
             }
         }
