@@ -13,6 +13,11 @@ pipeline {
         ARTIFACT_VERSION = "${BUILD_NUMBER}"
     }
 
+    tools {
+        jdk 'JDK9'
+        maven 'M3'
+    }
+
     stages {
         stage('Git Check out') {
             steps {
