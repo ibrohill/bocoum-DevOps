@@ -1,20 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        MAVEN_HOME = tool 'M3'
-        PATH = "$MAVEN_HOME/bin:$PATH"
-
-        NEXUS_VERSION = "nexus3"
-        NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "172.18.0.4:8081"
-        NEXUS_REPOSITORY = "repoJenkinsLy"
-        NEXUS_CREDENTIAL_ID = "nexusCredential"
-        ARTIFACT_VERSION = "${BUILD_NUMBER}"
-        SONARQUBE_URL = 'http://localhost:9000'  // Mettez l'URL réelle de votre serveur SonarQube ici
-        SONARQUBE_TOKEN = credentials('sonarqube-token-id') // Configurez cela dans les informations d'identification Jenkins
-    }
-
     tools {
         jdk 'JDK_11'
         maven 'M3'
