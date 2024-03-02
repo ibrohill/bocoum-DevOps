@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        mvn = tool 'M3'
+    }
+
     tools {
         jdk 'JDK_11'
         maven 'M3'
