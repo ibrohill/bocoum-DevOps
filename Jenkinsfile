@@ -8,7 +8,6 @@ pipeline {
     tools {
         jdk 'JDK_11'
         maven 'M3'
-        sonarqube 'sonar-server'
     }
 
     stages {
@@ -24,16 +23,14 @@ pipeline {
             }
         }
         stage('SonarQube Analysis') {
-            steps {
-                script {
-                    def scannerHome = tool 'sonarqube'
-                    withSonarQubeEnv('sonar-server') {
-                        sh "${scannerHome}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=bocoum -Dsonar.projectName=bocoum -Dsonar.login=sqp_ad4c87a9ba68a382667f94b76012e375118e2967"
-                    }
-                }
+            steps{
+            withSonarQubeEnv('sonar-server') {
+            sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=bocoum -Dsonar.projectName=bocoum -Dsonar.login=sqp_8655519a4a1ab407f4bd72a3b0e3650227be35cf"
             }
+            }
+     
         }
-
+        
         stage('Publish to Nexus') {
             steps {
                 script {
