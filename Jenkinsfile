@@ -25,7 +25,7 @@ pipeline {
     stage('SonarQube Analysis') {
       steps{
         withSonarQubeEnv('sonar-server') {
-        sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=bocoum -Dsonar.projectName=bocoum -Dsonar.login=sqp_1b2ab8ba357375d5abf6a2448ba19dea0949b0b5"
+        sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=bocoum -Dsonar.projectName=bocoum -Dsonar.login=sqp_ad4c87a9ba68a382667f94b76012e375118e2967"
       }
     }
      
