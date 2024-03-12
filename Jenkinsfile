@@ -28,11 +28,16 @@ pipeline {
                 script {
                     def scannerHome = tool 'sonar-server'
                     withSonarQubeEnv('sonar-server') {
-                        sh "${scannerHome}/bin/sonar-scanner"
+                        sh "${scannerHome}/bin/sonar-scanner \
+                            -Dsonar.projectKey=bocoum \
+                            -Dsonar.projectName=bocoum \
+                            -Dsonar.login=bocoum1 \
+                            -Dsonar.host.url=http://127.0.0.1:9000"
                     }
                 }
             }
         }
+
         
         stage('Publish to Nexus') {
             steps {
