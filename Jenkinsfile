@@ -23,20 +23,15 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
-            steps {
-                script {
-                    def scannerHome = tool 'sonar-server'
-                    withSonarQubeEnv('sonar-server') {
-                        sh "${scannerHome}/bin/sonar-scanner \
-                            -Dsonar.projectKey=bocoum \
-                            -Dsonar.projectName=bocoum \
-                            -Dsonar.login=bocoum1 \
-                            -Dsonar.host.url=http://127.0.0.1:9000"
-                    }
-                }
-            }
-        }
+    stage('SonarQube Analysis') {
+      steps{
+        withSonarQubeEnv('sonar-server') {
+        sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=bocoum-DevOps  -Dsonar.projectName=bocoum-DevOps"
+      }
+    }
+     
+  }
+
 
         
         stage('Publish to Nexus') {
